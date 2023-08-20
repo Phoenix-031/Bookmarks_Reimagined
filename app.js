@@ -7,6 +7,9 @@ const cors = require("cors");
 const { message } = require("./functions/message");
 const { NOT_FOUND, OK } = require("./functions/messageType");
 
+//route imports
+const authRoutes = require("./routes/auth.routes");
+
 const app = express();
 
 //environment variable or you can say constants
@@ -29,6 +32,8 @@ app.use(express.urlencoded({
 app.get("/", (req, res) => {
     message(res, OK, "Welcome to the chrome extension api");
 });
+
+app.use('/auth', authRoutes)
 
 
 // non existing routes
